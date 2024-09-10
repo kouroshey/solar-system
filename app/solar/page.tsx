@@ -1,8 +1,10 @@
 
 const page = () => {
   return (
-    <div>page</div>
+    <main>
+      SOLARS
+    </main>
   )
 }
 
-export default page
+export default page 

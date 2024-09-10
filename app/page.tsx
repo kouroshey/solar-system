@@ -1,10 +1,5 @@
-import Link from 'next/link'
+import { redirect } from 'next/navigation'
 
 export default function Home() {
-  return (
-    <main>
-      task
-      <Link href={'solar'}>شروع بازی</Link>
-    </main>
-  );
+  redirect('/welcome')
 }
