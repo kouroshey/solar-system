@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .welcome-page {
-  background-image: url('../../public/images/backgrounds/welcome-bg.png');
+  background-image: url('../../public/images/backgrounds/welcome2.jpg');
   background-position: center;
   background-size: cover;
   width: 100%;
@@ -11,22 +11,29 @@
 }
 
 .welcome-modal {
-  background: linear-gradient(to left, #0087D7, #25017F);
+  background: linear-gradient(to left, #004066, #11003d);
   color: white;
   padding: 1rem;
   border-radius: 15px;
 }
 
-.button-active {
+.btn {
   padding: 0.5rem 2rem;
   border-radius: 10px;
   border: none;
   font-weight: bold;
+}
+
+.btn-disable {
+  opacity: 0.6;
+}
+
+.btn-active {
   cursor: pointer;
   transition: all 0.1s ease-out;
 }
 
-.button-active:hover {
+.btn-active:hover {
   transform: translateY(3px);
 }
 
