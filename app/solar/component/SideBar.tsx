@@ -26,10 +26,10 @@ type SidebarProps = {
   isSortedByIdHandler: () => void;
   isCheckBtnActive: boolean;
   setIsGuideModalShow: (val: boolean) => void;
-
+  resetGame: () => void;
 }
 
-const SideBar: FC<SidebarProps> = ({ setIsGuideModalShow, isSortedByIdHandler, isCheckBtnActive }) => {
+const SideBar: FC<SidebarProps> = ({ resetGame, setIsGuideModalShow, isSortedByIdHandler, isCheckBtnActive }) => {
   return (
     <div className="w-2/6 bg-[#0E0028] h-screen overflow-scroll">
       <div className='planets-container w-100 absolute top-1/2 select-none right-0 transform -translate-y-1/2 rounded-xl'>
@@ -51,6 +51,17 @@ const SideBar: FC<SidebarProps> = ({ setIsGuideModalShow, isSortedByIdHandler, i
             onClick={isSortedByIdHandler}
           >
             دیدن نتیجه
+          </button>
+          <button
+            // disabled={isCheckBtnActive}
+            className={`btn bg-orange-500 mt-4 text-white ${isCheckBtnActive ? 'btn-active shadow-md shadow-orange-500 hover:shadow-sm' : 'btn-disable'}`}
+            onClick={() => {
+              resetGame()
+              console.log('reset');
+
+            }}
+          >
+            از اول
           </button>
         </div>
       </div>

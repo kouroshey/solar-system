@@ -17,6 +17,14 @@
   border-radius: 15px;
 }
 
+.success-result {
+  background: linear-gradient(to left, #00b93a, #29de00);
+}
+
+.failed-result {
+  background: linear-gradient(to left, #660000, #810000);
+}
+
 .btn {
   padding: 0.5rem 2rem;
   border-radius: 10px;

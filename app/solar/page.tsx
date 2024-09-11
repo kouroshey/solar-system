@@ -23,17 +23,19 @@ type Planet = {
   img: HTMLImageElement
 }
 
+const initialPlanets = [
+  { id: '1', name: 'زهره', img: VenusImage },
+  { id: '0', name: 'عطارد', img: MercuryImage },
+  { id: '5', name: 'زحل', img: SaturnImage },
+  { id: '4', name: 'مشتری', img: JupiterImage },
+  { id: '6', name: 'اورانوس', img: UranusImage },
+  { id: '3', name: 'مریخ', img: MarsImage },
+  { id: '7', name: 'نپتون', img: NeptuneImage },
+  { id: '2', name: 'زمین', img: EarthImage },
+]
+
 const SolarSystemPage = () => {
-  const [planets, setPlanets] = useState<Planet[]>([
-    { id: '1', name: 'زهره', img: VenusImage },
-    { id: '0', name: 'عطارد', img: MercuryImage },
-    { id: '5', name: 'زحل', img: SaturnImage },
-    { id: '4', name: 'مشتری', img: JupiterImage },
-    { id: '6', name: 'اورانوس', img: UranusImage },
-    { id: '3', name: 'مریخ', img: MarsImage },
-    { id: '7', name: 'نپتون', img: NeptuneImage },
-    { id: '2', name: 'زمین', img: EarthImage },
-  ])
+  const [planets, setPlanets] = useState<Planet[]>(initialPlanets)
   const [containers] = useState(['0', '1', '2', '3', '4', '5', '6', '7'])
   const [activeContainer, setActiveContainer] = useState<string>()
   const [isCheckBtnActive, setIsCheckBtnActive] = useState<boolean>(false)
@@ -90,6 +92,11 @@ const SolarSystemPage = () => {
     setIsModalShow(true)
   }
 
+  const resetGame = () => {
+    setPlanets(initialPlanets)
+    setIsCheckBtnActive(false)
+  }
+
   useEffect(() => {
     if (isConfettiShow) {
       setTimeout(() => {
@@ -107,7 +114,12 @@ const SolarSystemPage = () => {
   return (
     <main className="bg-[#323257] h-screen text-white flex">
       {isConfettiShow ? <ReactConfetti /> : ''}
-      <SideBar setIsGuideModalShow={setIsGuideModalShow} isCheckBtnActive={isCheckBtnActive} isSortedByIdHandler={isSortedByIdAscending} />
+      <SideBar
+        resetGame={resetGame}
+        setIsGuideModalShow={setIsGuideModalShow}
+        isCheckBtnActive={isCheckBtnActive}
+        isSortedByIdHandler={isSortedByIdAscending}
+      />
       <DndContext onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
         <div className="solar-system-container">
           {containers.map(id => {
@@ -129,6 +141,7 @@ const SolarSystemPage = () => {
         isModalShow={isModalShow}
         setIsModalShow={setIsModalShow}
         isCurrectSorted={isCurrectSorted}
+        resetGame={resetGame}
       />
       <GuideModal
         isModalShow={isGuideModalShow}
