@@ -20,7 +20,7 @@ import GuideModal from './component/GuideModal';
 type Planet = {
   id: string;
   name: string;
-  img: any
+  img: HTMLImageElement
 }
 
 const SolarSystemPage = () => {
@@ -34,7 +34,7 @@ const SolarSystemPage = () => {
     { id: '7', name: 'نپتون', img: NeptuneImage },
     { id: '2', name: 'زمین', img: EarthImage },
   ])
-  const [containers, setContainers] = useState(['0', '1', '2', '3', '4', '5', '6', '7'])
+  const [containers] = useState(['0', '1', '2', '3', '4', '5', '6', '7'])
   const [activeContainer, setActiveContainer] = useState<string>()
   const [isCheckBtnActive, setIsCheckBtnActive] = useState<boolean>(false)
   const [isCurrectSorted, setisCurrectSorted] = useState<boolean>(false)
@@ -112,7 +112,7 @@ const SolarSystemPage = () => {
         <div className="solar-system-container">
           {containers.map(id => {
             return (
-              <div className={`planet-container${id} planet-container ${activeContainer == id ? 'container-active' : ''}`}>
+              <div key={id} className={`planet-container${id} planet-container ${activeContainer == id ? 'container-active' : ''}`}>
                 <Droppable id={containers[Number(id)]}>
                   <Draggable id={id}>
                     <div key={id} className='flex gap-2 items-center'>
